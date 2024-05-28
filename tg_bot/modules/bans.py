@@ -51,7 +51,7 @@ RUNBAN_ERRORS = {
 @can_restrict
 @user_admin
 @loggable
-def ban(bot: Bot, update: Update, args: List[str]) -> str:
+def Lban(bot: Bot, update: Update, args: List[str]) -> str:
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
     message = update.effective_message  # type: Optional[Message]
@@ -71,7 +71,7 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
         else:
             raise
 
-    if is_user_ban_protected(chat, user_id, member):
+    if is_user_Lban_protected(chat, user_id, member):
         message.reply_text("I really wish I could ban admins...")
         return ""
 
@@ -80,7 +80,7 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
         return ""
 
     log = "<b>{}:</b>" \
-          "\n#BANNED" \
+          "\n#LUND BANNED BHENCHOD" \
           "\n<b>Admin:</b> {}" \
           "\n<b>User:</b> {}".format(html.escape(chat.title), mention_html(user.id, user.first_name),
                                      mention_html(member.user.id, member.user.first_name))
@@ -447,7 +447,7 @@ __help__ = """
  - /kickme: kicks the user who issued the command
 
 *Admin only:*
- - /ban <userhandle>: bans a user. (via handle, or reply)
+ - /Lban <userhandle>: bans a user. (via handle, or reply)
  - /tban <userhandle> x(m/h/d): bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
  - /unban <userhandle>: unbans a user. (via handle, or reply)
  - /kick <userhandle>: kicks a user, (via handle, or reply)
@@ -455,7 +455,7 @@ __help__ = """
 
 __mod_name__ = "Bans"
 
-BAN_HANDLER = CommandHandler("ban", ban, pass_args=True, filters=Filters.group)
+LUNDBAN_HANDLER = CommandHandler("Lban", ban, pass_args=True, filters=Filters.group)
 TEMPBAN_HANDLER = CommandHandler(["tban", "tempban"], temp_ban, pass_args=True, filters=Filters.group)
 KICK_HANDLER = CommandHandler("kick", kick, pass_args=True, filters=Filters.group)
 UNBAN_HANDLER = CommandHandler("unban", unban, pass_args=True, filters=Filters.group)
@@ -463,7 +463,7 @@ KICKME_HANDLER = DisableAbleCommandHandler("kickme", kickme, filters=Filters.gro
 RBAN_HANDLER = CommandHandler("rban", rban, pass_args=True, filters=CustomFilters.sudo_filter)
 RUNBAN_HANDLER = CommandHandler("runban", runban, pass_args=True, filters=CustomFilters.sudo_filter)
 
-dispatcher.add_handler(BAN_HANDLER)
+dispatcher.add_handler(LUNDBAN_HANDLER)
 dispatcher.add_handler(TEMPBAN_HANDLER)
 dispatcher.add_handler(KICK_HANDLER)
 dispatcher.add_handler(UNBAN_HANDLER)
